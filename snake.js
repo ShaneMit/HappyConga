@@ -30,7 +30,8 @@ export function expandSnake(amount) {
 }
 
 export function onSnake(position, { ignoreHead = false } = {}) {
-  return snakeBody.some(segment => {
+  return snakeBody.some((segment, index) => {
+    if (ignoreHead && index === 0) return false
     return equalPositions(segment, position)
   })
 }
